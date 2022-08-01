@@ -1,0 +1,18 @@
+using IniParser;
+using IniParser.Model;
+
+private string readIni(string wurzel, string eintrag, string inipath)
+        {
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile(inipath);
+            string wertdeseintrags = data[wurzel][eintrag];
+            return wertdeseintrags;
+        } // Methode zum einlesen der Ini Dateien
+       
+private void writeIni(string wurzel, string eintrag, string wert, string inipath)
+        {
+            var parser = new FileIniDataParser();
+            IniData data = new IniData();
+            data[wurzel][eintrag] = wert;
+            parser.WriteFile(inipath, data);
+        } // Methode zum schreiben von Ini Dateien
