@@ -1,0 +1,9 @@
+private void replaceUmlaute(TextBox textboxname)
+        {
+            if (textboxname.Text.Contains('ö') || textboxname.Text.Contains('ä') || textboxname.Text.Contains('ü'))
+            {
+                textboxname.Text = textboxname.Text.Replace("ö", "oe");
+                textboxname.Text = textboxname.Text.Replace("ü", "ue");
+                textboxname.Text = textboxname.Text.Replace("ä", "ae");
+            }
+        } // Umlaute aus Textboxen entfernen
