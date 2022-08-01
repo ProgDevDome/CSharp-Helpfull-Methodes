@@ -1,0 +1,28 @@
+private void writeLog(string text, int fehlerwert) // fehlerwert = 1 [Fehler] | fehlerwert = 2 [Info] | fehlerwert = 3 [Warnung]
+        {
+            if (Global.Debug == "true")
+            {
+                string fehler ="";
+                String filepath = "";
+                filepath = Directory.GetCurrentDirectory();
+                filepath = filepath + @"\debug.txt";
+                if (!File.Exists(filepath))
+                {
+                    File.Create(filepath);
+                }
+                StringBuilder sb = new StringBuilder();
+                
+                switch(fehlerwert)
+                {
+                    case 1: fehler = "Fehler";
+                        break;
+                    case 2: fehler = "Info";
+                         break;
+                    case 3: fehler = "Warnung";
+                        break;
+                }
+                sb.Append(DateTime.Now.ToString() + "| " + fehler + ": " + text);
+                File.AppendAllText(filepath, sb.ToString() + Environment.NewLine);
+                sb.Clear();
+            }
+        } // Schreibe Daten in ein Logfile
